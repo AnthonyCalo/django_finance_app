@@ -3,6 +3,12 @@
     <h1> this is the index page</h1>
     <form class="shadow-lg m-10 rounded-lg" method="post">
         {% csrf_token %}
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+
         <div class="form-container px-10 py-10 flex">
             <div class="mx-10">
                 <div class="mb-5">
